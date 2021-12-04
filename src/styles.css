@@ -1,0 +1,52 @@
+.weather-app {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+#search {
+  text-align: left;
+}
+
+.container .container2 {
+  padding: 30px 10px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  border: 0.5px lightgray solid;
+  border-radius: 6px;
+  font-family: "Courier New", Courier, monospace;
+  box-shadow: 8px 5px 30px rgb(148, 145, 145);
+}
+
+.city {
+  border: 1px;
+  padding: 3px 6px;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: #cce7f0;
+  font-size: 16px;
+}
+
+.currentB {
+  border: 1px;
+  padding: 3px 6px;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: #cce7f0;
+  font-size: 16px;
+}
+
+.current-temperature {
+  font-size: 45px;
+  background-color: #f0e8e6;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0px;
+  border-radius: 4px;
+}
+
+.forecast-label {
+  font-size: 16px;
+  font-weight: bold;
+}
