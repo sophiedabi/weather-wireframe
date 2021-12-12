@@ -127,5 +127,5 @@ function showForecast(response) {
 }
 let city = "Paris";
 let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
-let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 axios.get(forecastUrl).then(showForecast);
