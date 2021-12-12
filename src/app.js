@@ -86,7 +86,7 @@ searchbar.addEventListener("submit", submitting);
 let searchButton = document.querySelector("#searchButton");
 searchButton.addEventListener("click", submitting);
 
-searchCity("Braunschweig");
+searchCity("Brunswick");
 
 let celsiusTemp = null;
 
