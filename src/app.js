@@ -48,15 +48,21 @@ function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   let tempNow = document.querySelector("#tempNow");
   tempNow.innerHTML = `${temperature}`;
+  let icon = document.querySelector("#icon");
   icon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  let weatherdescr = document.querySelector("#weatherdescr");
   weatherdescr.innerHTML = `currently: ${response.data.weather[0].description}`;
+  let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `humidity: ${response.data.main.humidity}%`;
+  let wind = document.querySelector("#wind");
   wind.innerHTML = `wind: ${Math.round(response.data.wind.speed)}km/h`;
 
   celsiusTemp = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 
 let currentButton = document.querySelector(".currentB");
@@ -86,7 +92,7 @@ searchbar.addEventListener("submit", submitting);
 let searchButton = document.querySelector("#searchButton");
 searchButton.addEventListener("click", submitting);
 
-searchCity("Brunswick");
+searchCity("Braunschweig");
 
 let celsiusTemp = null;
 
@@ -113,31 +119,9 @@ function convertToCelsius(event) {
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-function showForecast(response) {
-  let forecastDay1 = document.querySelector(".forecastDay1");
-  forecastDay1.innerHTML = `min.${Math.round(
-    response.daily.temp.min
-  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
-  let forecastDay2 = document.querySelector(".forecastDay2");
-  forecastDay2.innerHTML = `min.${Math.round(
-    response.daily.temp.min
-  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
-  let forecastDay3 = document.querySelector(".forecastDay3");
-  forecastDay3.innerHTML = `min.${Math.round(
-    response.daily.temp.min
-  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
-  let forecastDay4 = document.querySelector(".forecastDay4");
-  forecastDay4.innerHTML = `min.${Math.round(
-    response.daily.temp.min
-  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
-  let forecastDay5 = document.querySelector(".forecastDay5");
-  forecastDay5.innerHTML = `min.${Math.round(
-    response.daily.temp.min
-  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
-}
-
 function getForecast(coordinates) {
   let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
   let apiForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiForecast).then(showForecast);
 }
+
