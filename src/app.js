@@ -2,7 +2,7 @@ function changeCity(event) {
   event.preventDefault();
   let h1 = document.querySelector("h1");
   let cityInput = document.querySelector("#search");
-  h1.innerHTML = `weather in ${cityInput.value}`;
+  h1.innerHTML = `weather${cityInput.value}`;
 }
 
 function formatDate(date) {
@@ -150,10 +150,10 @@ function showForecast(response) {
                   <div class="weather-forecast-temperatures">
                     <span class="weather-forecast-temperatures-max">${Math.round(
                       forecastDay.temp.max
-                    )}</span>
+                    )}°</span>
                     <span class="weather-forecast-temperatures-min">${Math.round(
                       forecastDay.temp.min
-                    )}</span>
+                    )}°</span>
                   </div>
                 </div>
   `;
