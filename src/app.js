@@ -112,3 +112,20 @@ function convertToCelsius(event) {
 }
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+
+function showForecast(response) {
+  let forecastDay1 = document.querySelector(".forecastDay1");
+  forecastDay1.innerHTML = `${Math.round(response.data.list[0].main.temp)}°C`;
+  let forecastDay2 = document.querySelector(".forecastDay2");
+  forecastDay2.innerHTML = `${Math.round(response.data.list[1].main.temp)}°C`;
+  let forecastDay3 = document.querySelector(".forecastDay3");
+  forecastDay3.innerHTML = `${Math.round(response.data.list[2].main.temp)}°C`;
+  let forecastDay4 = document.querySelector(".forecastDay4");
+  forecastDay4.innerHTML = `${Math.round(response.data.list[3].main.temp)}°C`;
+  let forecastDay5 = document.querySelector(".forecastDay5");
+  forecastDay5.innerHTML = `${Math.round(response.data.list[4].main.temp)}°C`;
+}
+let city = "Paris";
+let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
+let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(forecastUrl).then(showForecast);
