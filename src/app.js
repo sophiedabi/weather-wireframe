@@ -125,7 +125,9 @@ function showForecast(response) {
   let forecastDay5 = document.querySelector(".forecastDay5");
   forecastDay5.innerHTML = `${Math.round(response.data.list[4].main.temp)}°C`;
 }
-let city = "Paris";
+
+let lat = position.coords.latitude;
+let long = position.coords.longitude;
 let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
 let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 axios.get(forecastUrl).then(showForecast);
