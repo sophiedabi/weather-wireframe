@@ -115,19 +115,29 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 function showForecast(response) {
   let forecastDay1 = document.querySelector(".forecastDay1");
-  forecastDay1.innerHTML = `${Math.round(response.data.list[0].main.temp)}°C`;
+  forecastDay1.innerHTML = `min.${Math.round(
+    response.daily.temp.min
+  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
   let forecastDay2 = document.querySelector(".forecastDay2");
-  forecastDay2.innerHTML = `${Math.round(response.data.list[1].main.temp)}°C`;
+  forecastDay2.innerHTML = `min.${Math.round(
+    response.daily.temp.min
+  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
   let forecastDay3 = document.querySelector(".forecastDay3");
-  forecastDay3.innerHTML = `${Math.round(response.data.list[2].main.temp)}°C`;
+  forecastDay3.innerHTML = `min.${Math.round(
+    response.daily.temp.min
+  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
   let forecastDay4 = document.querySelector(".forecastDay4");
-  forecastDay4.innerHTML = `${Math.round(response.data.list[3].main.temp)}°C`;
+  forecastDay4.innerHTML = `min.${Math.round(
+    response.daily.temp.min
+  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
   let forecastDay5 = document.querySelector(".forecastDay5");
-  forecastDay5.innerHTML = `${Math.round(response.data.list[4].main.temp)}°C`;
+  forecastDay5.innerHTML = `min.${Math.round(
+    response.daily.temp.min
+  )}°C|max.${Math.round(response.daily.temp.max)}°C`;
 }
 
-let lat = position.coords.latitude;
-let long = position.coords.longitude;
-let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
-let forecastUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-axios.get(forecastUrl).then(showForecast);
+function getForecast(coordinates) {
+  let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
+  let apiForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiForecast).then(showForecast);
+}
