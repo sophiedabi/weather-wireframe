@@ -42,6 +42,14 @@ function getPosition(position) {
   axios.get(apiUrlCoords).then(showWeather);
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "53551bbf2ab7d7e68f94a20c22d68b6b";
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrlForecast);
+  axios.get(apiUrlForecast).then(showForecast);
+}
+
 function showWeather(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = `weather in <br/> ${response.data.name}`;
@@ -61,6 +69,8 @@ function showWeather(response) {
   wind.innerHTML = `wind: ${Math.round(response.data.wind.speed)}km/h`;
 
   celsiusTemp = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 
 let currentButton = document.querySelector(".currentB");
@@ -117,7 +127,8 @@ function convertToCelsius(event) {
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
